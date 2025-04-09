@@ -1,0 +1,57 @@
+package main
+
+import (
+	"fmt"
+	"log"
+	"os"
+	"github.com/joho/godotenv"
+	"database/sql"
+	"github.com/devfullcycle/imersao22/go-gateway/internal/service"
+	"github.com/devfullcycle/imersao22/go-gateway/internal/web/server"
+	"github.com/devfullcycle/imersao22/go-gateway/internal/repository"
+)
+
+func getEnv(key, defaultValue string) string {
+	if value, ok := os.LookupEnv(key); ok {
+		return value
+	}
+	return defaultValue
+}
+
+func main() {
+	if err := godotenv.Load(); err != nil {
+		log.Fatal("Error loading .env file")
+	}
+
+	//Strin de conexão com o banco
+	connStr := fmt.Sprintf(
+		getEnv("DB_HOST", "db"),
+		getEnv("DB_PORT", "5432"),
+		getEnv("DB_USER", "postgres"),
+		getEnv("DB_PASSWORD", "postgres"),
+		getEnv("DB_NAME", "gateway"),
+		getEnv("DB_SSLMODE", "disable"),
+	)
+	db, err := sql.Open("postgres", connStr)
+		if err != nil {
+			log.Fatal("Error connecting to database")
+		}
+		defer db.Close()
+
+		accountRepository := repository.NewAccountRepository(db)
+		accountService := service.NewAccountService(accountRepository)
+
+		port := getEnv("HTTP_PORT", "8080")
+		srv := server.NewServer(port, accountService)
+		srv.ConfigureRoutes()
+
+		if err := srv.Start(); err != nil {
+			log.Fatal("Error starting server", err)
+		}
+		
+	}
+
+
+
+
+
