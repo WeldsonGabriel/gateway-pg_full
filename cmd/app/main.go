@@ -9,6 +9,7 @@ import (
 	"github.com/devfullcycle/imersao22/go-gateway/internal/service"
 	"github.com/devfullcycle/imersao22/go-gateway/internal/web/server"
 	"github.com/devfullcycle/imersao22/go-gateway/internal/repository"
+	_ "github.com/lib/pq"
 )
 
 func getEnv(key, defaultValue string) string {
@@ -25,7 +26,8 @@ func main() {
 
 	//Strin de conexão com o banco
 	connStr := fmt.Sprintf(
-		getEnv("DB_HOST", "db"),
+		"host=%s port=%s user=%s password=%s dbname=%s sslmode=%s",
+		getEnv("DB_HOST", "localhost"),
 		getEnv("DB_PORT", "5432"),
 		getEnv("DB_USER", "postgres"),
 		getEnv("DB_PASSWORD", "postgres"),
