@@ -11,4 +11,8 @@ var (
 	ErrInvoiceNotFound = errors.New("invoice not found")
 	// Authorization errors
 	ErrUnauthorized = errors.New("unauthorized access")
+	// Amount errors
+	ErrInvalidAmount = errors.New("amount must be greater than 0")
+	// Status errors
+	ErrInvalidStatus = errors.New("invalid status")
 )
