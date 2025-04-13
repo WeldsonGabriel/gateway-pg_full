@@ -6,8 +6,9 @@ import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { StatusBadge } from "@/components/status-badge"
 import { Eye, Download, ChevronLeft, ChevronRight, Plus } from "lucide-react"
+import InvoiceDetailsPage from "./[id]/page"
 
-export default function DashboardPage() {
+export default function invoicesPage() {
   // Dados de exemplo para a tabela
   const invoices = [
     {
@@ -41,7 +42,7 @@ export default function DashboardPage() {
             <CardTitle className="text-2xl font-bold text-white">Faturas</CardTitle>
             <CardDescription className="text-gray-300">Gerencie suas faturas e acompanhe os pagamentos</CardDescription>
           </div>
-          <Link href="/dashboard/nova-fatura">
+          <Link href="/invoices/create">
             <Button className="bg-indigo-600 hover:bg-indigo-700">
               <Plus className="mr-1 h-4 w-4" /> Nova Fatura
             </Button>
@@ -102,7 +103,7 @@ export default function DashboardPage() {
                       </td>
                       <td className="py-3 px-4 text-right">
                         <div className="flex justify-end gap-2">
-                          <Link href={`/dashboard/faturas/${invoice.id.replace("#", "")}`}>
+                          <Link href={`invoices/${invoice.id.replace("#", "")}`}>
                             <Button variant="ghost" size="icon" className="h-8 w-8 text-white">
                               <Eye className="h-4 w-4" />
                             </Button>

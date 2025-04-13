@@ -11,7 +11,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
 import { CreditCard } from "lucide-react"
 
-export default function NovaFaturaPage() {
+export default function createInvoicesPage() {
   const router = useRouter()
   const [valor, setValor] = useState("")
   const [descricao, setDescricao] = useState("")
@@ -23,11 +23,11 @@ export default function NovaFaturaPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     // Lógica para processar o pagamento
-    router.push("/dashboard")
+    router.push("/invoices")
   }
 
   const handleCancel = () => {
-    router.push("/dashboard")
+    router.push("/invoices")
   }
 
   // Calcula valores

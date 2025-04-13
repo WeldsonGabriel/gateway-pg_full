@@ -10,7 +10,7 @@ export function Header({ username = "usuário" }: HeaderProps) {
   return (
     <header className="w-full bg-[#1a202c] border-b border-gray-800 py-4 px-6">
       <div className="flex justify-between items-center">
-        <Link href="/dashboard" className="text-xl font-semibold text-white">
+        <Link href="/home" className="text-xl font-semibold text-white">
           Full Cycle Gateway
         </Link>
         <div className="flex items-center gap-4">
