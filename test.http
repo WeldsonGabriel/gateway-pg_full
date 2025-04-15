@@ -7,7 +7,7 @@ Content-Type: application/json
 
 {
     "name": "John Doe",
-    "email": "john.doe1@example.com"
+    "email": "john.doe11@example.com"
 }
 
 ### Obter contas
@@ -32,7 +32,7 @@ X-API-Key: {{createAccount.response.body.api_key}}
 }
 
 ### Obter faturas
-@invoiceId = {{createInvoice.response.body.id}}
+ @invoiceId = {{createInvoice.response.body.id}}
 GET {{baseUrl}}/invoice/{{invoiceId}}
 X-API-Key: {{createAccount.response.body.api_key}}
 

@@ -19,9 +19,9 @@ type CreateInvoiceInput struct {
 	PaymentType     string  `json:"payment_type" `
 	CardNumber      string  `json:"card_number" `
 	CVV             string  `json:"cvv" `
-	ExpirationMonth int     `json:"expiration_month" `
-	ExpirationYear  int     `json:"expiration_year" `
-	CardHolderName  string  `json:"card_holder_name"`
+	ExpirationMonth int     `json:"expiry_month" `
+	ExpirationYear  int     `json:"expiry_year" `
+	CardHolderName  string  `json:"cardholder_name"`
 }
 
 type InvoiceOutput struct {
